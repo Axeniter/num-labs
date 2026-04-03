@@ -1,5 +1,6 @@
 import numpy as np
 
+
 functions = {
     1: lambda x: x**2 + np.log(x),
     2: lambda x: x**2 - np.log10(x+2),
@@ -26,6 +27,7 @@ functions = {
     23: lambda x: x**2 + np.cos(np.pi*x/2),
     24: lambda x: x/2 - np.cos(x/2)
 }
+
 
 first_derivatives = {
     1: lambda x: 2*x + 1/x,
@@ -54,6 +56,7 @@ first_derivatives = {
     24: lambda x: 0.5 + 0.5*np.sin(x/2)
 }
 
+
 second_derivatives = {
     1: lambda x: 2 - 1/x**2,
     2: lambda x: 2 + 1/((x+2)**2 * np.log(10)),
@@ -80,6 +83,7 @@ second_derivatives = {
     23: lambda x: 2 - 0.25*np.pi**2 * np.cos(0.5*np.pi*x),
     24: lambda x: 0.25*np.cos(x/2)
 }
+
 
 third_derivatives = {
     1: lambda x: 2/x**3,
@@ -108,6 +112,7 @@ third_derivatives = {
     24: lambda x: -0.125*np.sin(x/2)
 }
 
+
 intervals = {
     1: (0.4, 0.9),
     2: (0.5, 1.0),
@@ -135,6 +140,7 @@ intervals = {
     24: (0.4, 0.9)
 }
 
+
 points = {
     1: (0.52, 0.42, 0.87, 0.67),
     2: (0.53, 0.52, 0.97, 0.73),
@@ -161,3 +167,17 @@ points = {
     23: (0.13, 0.12, 0.57, 0.33),
     24: (0.64, 0.42, 0.87, 0.63)
 }
+
+
+def get_function_data(variant):
+    if variant not in functions:
+        raise ValueError(f"Вариант должен быть в пределах 1-24")
+    
+    return {
+        'function': functions[variant],
+        'first_derivative': first_derivatives[variant],
+        'second_derivative': second_derivatives[variant],
+        'third_derivative': third_derivatives[variant],
+        'interval': intervals[variant],
+        'points': points[variant]
+    }
