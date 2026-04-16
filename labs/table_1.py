@@ -171,7 +171,7 @@ points = {
 
 def get_function_data(variant):
     if variant not in functions:
-        raise ValueError(f"Вариант должен быть в пределах 1-24")
+        raise ValueError("Вариант должен быть в пределах 1-24")
     
     return {
         'function': functions[variant],
